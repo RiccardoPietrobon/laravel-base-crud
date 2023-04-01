@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\SongController; //importo il controller
+use App\Http\Controllers\HomeController; //importo il controller
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,6 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', [PageController::class, 'index'])->name('homepage');
+Route::get('/', [HomeController::class, 'index'])->name('homepage'); //Controller statico per la home
+
+Route::resource('songs', SongController::class);//Controller CRUD per lista e dettaglio
