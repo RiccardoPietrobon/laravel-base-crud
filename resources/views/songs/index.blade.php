@@ -7,11 +7,11 @@
         @foreach ($songs as $song)
             <div class="col-4 g-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{$song->poster}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$song->title}}</h5>
                         <p class="card-text">{{$song->album}}</p>
-                        <a href="#" class="btn btn-danger">Dettaglio</a>
+                        <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">Dettaglio</a>{{-- funzione show in SongController --}}
                     </div>
                 </div>
             </div>

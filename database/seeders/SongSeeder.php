@@ -25,9 +25,9 @@ class SongSeeder extends Seeder
             $song->title = $faker->word();
             $song->album = $faker->city();
             $song->author = $faker->city();
-            $song->editor = $faker->time();
+            $song->editor = $faker->firstName();
             $song->lenght = $faker->time();
-            $song->poster = $faker->ean8();
+            $song->poster = "https://picsum.photos/200/300";
 
             $song->save();
         }
