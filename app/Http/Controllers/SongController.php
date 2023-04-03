@@ -32,7 +32,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        return view('songs.create');
     }
 
     /**
@@ -43,7 +43,13 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all(); //passo tutti i valori
+
+        $song = new Song;
+        $song->fill($data); //tutti gli attributi
+        $song->save();
+
+        return redirect()->route('songs.show', $song); //reindirizzo al nuovo album
     }
 
     /**
