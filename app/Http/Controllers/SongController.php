@@ -13,9 +13,15 @@ class SongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request) //faccio passare la richiesta
     {
-        $songs = Song::all();
+        if ($request->has('term')) {
+            $term = $request->get('term');
+            $songs = Song::where('title', 'LIKE', "%$term%")->paginate(5)->withQueryString();
+        } else {
+            $songs = Song::paginate(5); //con paginate vedrò i primi 5 IN QUESTO CASO risultati
+        }
+
         return view('songs.index', compact('songs')); //rispecchia il nome del metodo cosi distinguo meglio
     }
 

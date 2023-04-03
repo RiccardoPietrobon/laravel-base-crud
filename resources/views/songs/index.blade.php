@@ -2,7 +2,21 @@
 
 @section('page-name', 'Lista Album')
 
+@section('cdn')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@endsection
+
 @section('main-content')
+
+    <form class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Cerca..." name="term">
+        <button class="btn btn-outline-danger" type="submit">Filtra</button>
+    </form>
+
+    <div class="text-danger">
+        {{$songs->links('pagination::bootstrap-5')}}{{-- per far apparire i tasti delle pagine --}}
+    </div>
+
     <div class="row">
         @foreach ($songs as $song)
             <div class="col-4 g-3">
@@ -11,7 +25,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$song->title}}</h5>
                         <p class="card-text">{{$song->album}}</p>
-                        <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">Dettaglio</a>{{-- funzione show in SongController --}}
+                        <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">
+                            <i class="bi bi-box"></i>
+                        </a>{{-- funzione show in SongController --}}
                     </div>
                 </div>
             </div>

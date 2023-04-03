@@ -7,6 +7,8 @@
     <title>{{ env('APP_NAME') }} - @yield('page-name')</title>
 
     @vite('resources/js/app.js')
+
+    @yield('cdn'){{-- segnaposto cdn --}}
 </head>
 <body>
 
