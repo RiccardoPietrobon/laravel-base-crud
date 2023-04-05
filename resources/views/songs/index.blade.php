@@ -34,9 +34,12 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$song->title}}</h5>
                         <p class="card-text">{{$song->album}}</p>
-                        <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">
+                        <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">{{-- funzione show in SongController, dettaglio --}}
                             <i class="bi bi-box"></i>
-                        </a>{{-- funzione show in SongController --}}
+                        </a>
+                        <a href="{{ route('songs.edit', $song) }}" class="btn btn-danger">{{-- funzione edit in SongController, per modificare --}}
+                            <i class="bi bi-tools"></i>
+                        </a>
                     </div>
                 </div>
             </div>
