@@ -100,9 +100,10 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Song $song)
     {
-        //
+        $song->delete();
+        return redirect()->route('songs.index');
     }
 
     private function validation($data, $id = null) //funzione per la validazione
@@ -114,7 +115,7 @@ class SongController extends Controller
                 'album' => 'required|string|max:30',
                 'author' => 'required|string|max:20',
                 'editor' => 'required|string|max:20',
-                'lenght' => 'required|time',
+                'lenght' => 'required|date_format:H:i:s',
                 'poster' => 'required'
             ],
             [

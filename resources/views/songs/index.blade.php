@@ -34,16 +34,52 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$song->title}}</h5>
                         <p class="card-text">{{$song->album}}</p>
-                        <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">{{-- funzione show in SongController, dettaglio --}}
-                            <i class="bi bi-box"></i>
-                        </a>
-                        <a href="{{ route('songs.edit', $song) }}" class="btn btn-danger">{{-- funzione edit in SongController, per modificare --}}
-                            <i class="bi bi-tools"></i>
-                        </a>
+                        <div class="d-flex justify-content-around">
+                            <a href="{{ route('songs.show', $song) }}" class="btn btn-danger">{{-- funzione show in SongController, dettaglio --}}
+                                <i class="bi bi-box"></i>
+                            </a>
+                            <a href="{{ route('songs.edit', $song) }}" class="btn btn-danger">{{-- funzione edit in SongController, per modificare --}}
+                                <i class="bi bi-tools"></i>
+                            </a>
+                            
+                            <button class="bi bi-x-circle-fill btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ $song->id }}"></button>
+
+                        </div>
                     </div>
                 </div>
             </div>
         @endforeach
         
     </div>
+@endsection
+
+@section('modal')
+    @foreach ($songs as $song)
+        <!-- Modal -->
+        <div class="modal fade" id="delete-modal-{{ $song->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina la risorsa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Vuoi eliminare la risorsa: <strong>{{ $song->title }}</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+
+                <form action="{{ route('songs.destroy', $song) }}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="btn btn-primary">ELIMINA</button>
+
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    @endforeach
+    
+
 @endsection

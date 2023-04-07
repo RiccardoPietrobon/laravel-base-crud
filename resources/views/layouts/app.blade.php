@@ -26,5 +26,7 @@
         </div>
     </main>
 
+    @yield('modal')
+
 </body>
 </html>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('album', 30);
             $table->string('author', 20);
             $table->string('editor', 20);
-            $table->time('lenght');
+            $table->dateTime('lenght');
             $table->string('poster');
             $table->timestamps();
         });

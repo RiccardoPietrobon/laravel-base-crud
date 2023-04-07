@@ -32,3 +32,5 @@ Route::resource('songs', SongController::class);//Controller CRUD per lista e de
 // Route::post('songs/{song}/edit', [SongController::class, 'edit'])->name('songs.edit'); //Controller per la modifica
 
 // Route::put('songs/{song}/update', [SongController::class, 'update'])->name('songs.update'); //Controller per la modifica
+
+// Route::delete('songs/{song}/destroy', [SongController::class, 'destroy'])->name('songs.destroy'); //Controller per la cancellazione
